@@ -24,7 +24,7 @@ namespace Spawn.HDT.DeckCodeBot
         private TwitchChatBot m_bot;
         private DateTime m_dtLastResponse;
 
-        private MenuItem miMain;
+        private MenuItem miStatus;
         private ToggleSwitch m_toggle;
         #endregion
 
@@ -64,10 +64,15 @@ namespace Spawn.HDT.DeckCodeBot
         #region CreateMenuItem
         private MenuItem CreateMenuItem()
         {
-            m_toggle = new ToggleSwitch() { Header = Name, OffLabel = "Disconnected" };
+            m_toggle = new ToggleSwitch() { OffLabel = "Disconnected" };
             m_toggle.IsCheckedChanged += OnIsCheckedChanged;
 
-            miMain = new MenuItem()
+            MenuItem miMain = new MenuItem
+            {
+                Header = Name
+            };
+
+            miStatus = new MenuItem
             {
                 Header = m_toggle,
                 Icon = new Image()
@@ -75,6 +80,8 @@ namespace Spawn.HDT.DeckCodeBot
                     Source = new System.Windows.Media.Imaging.BitmapImage(new Uri("/Spawn.HDT.DeckCodeBot;component/Resources/Off.png", UriKind.Relative))
                 }
             };
+
+            miMain.Items.Add(miStatus);
 
             return miMain;
         }
@@ -95,7 +102,7 @@ namespace Spawn.HDT.DeckCodeBot
             {
                 DisconnectFromTwitch();
 
-                miMain.Icon = new Image()
+                miStatus.Icon = new Image()
                 {
                     Source = new System.Windows.Media.Imaging.BitmapImage(new Uri("/Spawn.HDT.DeckCodeBot;component/Resources/Off.png", UriKind.Relative))
                 };
@@ -110,7 +117,7 @@ namespace Spawn.HDT.DeckCodeBot
             {
                 m_toggle.OnLabel = "Connected";
 
-                miMain.Icon = new Image()
+                miStatus.Icon = new Image()
                 {
                     Source = new System.Windows.Media.Imaging.BitmapImage(new Uri("/Spawn.HDT.DeckCodeBot;component/Resources/On.png", UriKind.Relative))
                 };
