@@ -1,24 +1,15 @@
 ﻿#region Using
-using System;
 using System.Globalization;
 using System.Windows.Controls;
 #endregion
 
-namespace Spawn.HDT.DeckCodeBot.UI
+namespace Spawn.HDT.DeckCodeBot.UI.Components
 {
-    public class NumericValidationRule : ValidationRule
+    public class OAuthTokenValidationRule : ValidationRule
     {
         #region Properties
         #region ErrorMessage
-        public string ErrorMessage => $"Invalid value! Enter a value between {MinValue} and {MaxValue}.";
-        #endregion
-
-        #region MinValue
-        public int MinValue { get; set; }
-        #endregion
-
-        #region MaxValue
-        public int MaxValue { get; set; }
+        public string ErrorMessage => $"Invalid value! Must begin with 'oauth:'.";
         #endregion
         #endregion
 
@@ -29,9 +20,9 @@ namespace Spawn.HDT.DeckCodeBot.UI
 
             try
             {
-                int nValue = Convert.ToInt32(value.ToString());
+                string strValue = value.ToString();
 
-                if (nValue < MinValue || nValue > MaxValue)
+                if (!strValue.StartsWith("oauth:"))
                     retVal = new ValidationResult(false, ErrorMessage);
             }
             catch

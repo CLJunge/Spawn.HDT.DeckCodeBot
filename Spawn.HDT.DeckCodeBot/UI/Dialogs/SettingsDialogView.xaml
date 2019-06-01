@@ -4,7 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:controls="http://metro.mahapps.com/winfx/xaml/controls"
-        xmlns:ui="clr-namespace:Spawn.HDT.DeckCodeBot.UI"
+        xmlns:components="clr-namespace:Spawn.HDT.DeckCodeBot.UI.Components"
         xmlns:vm="clr-namespace:Spawn.HDT.DeckCodeBot.UI.ViewModels"
         mc:Ignorable="d" WindowStartupLocation="CenterOwner" BorderBrush="{DynamicResource AccentColorBrush}"
         Title="{Binding WindowTitle}" SizeToContent="WidthAndHeight" ResizeMode="NoResize" GlowBrush="Black">
@@ -36,7 +36,7 @@
                 <TextBox.Text>
                     <Binding Path="TwitchIrcPort" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged">
                         <Binding.ValidationRules>
-                            <ui:NumericValidationRule ValidatesOnTargetUpdated="True" MinValue="0" MaxValue="65535"/>
+                            <components:NumericValidationRule ValidatesOnTargetUpdated="True" MinValue="0" MaxValue="65535"/>
                         </Binding.ValidationRules>
                     </Binding>
                 </TextBox.Text>
@@ -56,7 +56,15 @@
                     <Run Style="{StaticResource LinkLabelStyle}" Text="{Binding TwitchOAuthTokenLabelText}"/>
                 </Hyperlink>
             </Label>
-            <TextBox Text="{Binding TwitchOAuthToken, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="0,0,5,0" Width="180"/>
+            <TextBox VerticalAlignment="Center" HorizontalAlignment="Right" Margin="0,0,5,0" Width="180">
+                <TextBox.Text>
+                    <Binding Path="TwitchOAuthToken" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged">
+                        <Binding.ValidationRules>
+                            <components:OAuthTokenValidationRule ValidatesOnTargetUpdated="True"/>
+                        </Binding.ValidationRules>
+                    </Binding>
+                </TextBox.Text>
+            </TextBox>
         </DockPanel>
         <DockPanel Height="30" ToolTip="The command the bot is going to respond to." ToolTipService.ShowDuration="10000">
             <Label Content="{Binding ChatCommandLabelText}" VerticalAlignment="Center" Margin="5,0,0,0"/>

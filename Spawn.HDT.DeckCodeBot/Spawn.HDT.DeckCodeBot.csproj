@@ -97,7 +97,8 @@
       <DependentUpon>SettingsDialogView.xaml</DependentUpon>
     </Compile>
     <Compile Include="UI\NotifyDirtyStatusEventArgs.cs" />
-    <Compile Include="UI\NumericValidationRule.cs" />
+    <Compile Include="UI\Components\NumericValidationRule.cs" />
+    <Compile Include="UI\Components\OAuthTokenValidationRule.cs" />
     <Compile Include="UI\RelayCommand.cs" />
     <Compile Include="UI\ViewModels\SettingsDialogViewModel.cs" />
     <Compile Include="UI\ViewModels\ViewModelBase.cs" />
