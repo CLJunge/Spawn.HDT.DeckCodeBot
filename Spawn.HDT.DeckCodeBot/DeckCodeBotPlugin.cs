@@ -2,6 +2,7 @@
 using Hearthstone_Deck_Tracker;
 using Hearthstone_Deck_Tracker.Controls.Error;
 using Hearthstone_Deck_Tracker.Hearthstone;
+using Hearthstone_Deck_Tracker.Plugins;
 using MahApps.Metro.Controls;
 using Spawn.HDT.DeckCodeBot.ChatBot;
 using Spawn.HDT.DeckCodeBot.UI.Dialogs;
@@ -13,7 +14,7 @@ using System.Windows.Controls;
 
 namespace Spawn.HDT.DeckCodeBot
 {
-    public class DeckCodeBotPlugin
+    public class DeckCodeBotPlugin : IPlugin
     {
         #region Constants
         private const double Cooldown = 1.5;

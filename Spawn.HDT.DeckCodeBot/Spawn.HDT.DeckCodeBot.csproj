@@ -36,18 +36,25 @@
   <PropertyGroup>
     <StartupObject />
   </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Deploy|AnyCPU'">
+    <OutputPath>bin\Deploy\</OutputPath>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="HearthDb">
       <HintPath>..\lib\HearthDb.dll</HintPath>
+      <Private>False</Private>
     </Reference>
     <Reference Include="HearthMirror">
       <HintPath>..\lib\HearthMirror.dll</HintPath>
+      <Private>False</Private>
     </Reference>
     <Reference Include="Hearthstone Deck Tracker">
       <HintPath>..\lib\Hearthstone Deck Tracker.exe</HintPath>
+      <Private>False</Private>
     </Reference>
     <Reference Include="MahApps.Metro">
       <HintPath>..\lib\MahApps.Metro.dll</HintPath>
+      <Private>False</Private>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
@@ -106,4 +113,9 @@
     </Page>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>if '$(ConfigurationName)' == 'Deploy' copy /Y "$(TargetPath)" "%25appdata%25\HearthstoneDeckTracker\Plugins\$(TargetFileName)"
+if '$(ConfigurationName)' == 'Deploy' start /d "D:\Repos\Visual Studio\Hearthstone-Deck-Tracker\Hearthstone Deck Tracker\bin\x86\Debug" HearthstoneDeckTracker.exe
+</PostBuildEvent>
+  </PropertyGroup>
 </Project>
