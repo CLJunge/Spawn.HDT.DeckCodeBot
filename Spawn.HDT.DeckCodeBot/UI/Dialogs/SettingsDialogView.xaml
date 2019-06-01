@@ -1,0 +1,71 @@
+﻿<controls:MetroWindow x:Class="Spawn.HDT.DeckCodeBot.UI.Dialogs.SettingsDialogView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:controls="http://metro.mahapps.com/winfx/xaml/controls"
+        xmlns:ui="clr-namespace:Spawn.HDT.DeckCodeBot.UI"
+        xmlns:vm="clr-namespace:Spawn.HDT.DeckCodeBot.UI.ViewModels"
+        mc:Ignorable="d" WindowStartupLocation="CenterOwner" BorderBrush="{DynamicResource AccentColorBrush}"
+        Title="{Binding WindowTitle}" SizeToContent="WidthAndHeight" ResizeMode="NoResize" GlowBrush="Black">
+    <Window.DataContext>
+        <vm:SettingsDialogViewModel/>
+    </Window.DataContext>
+    <Window.Resources>
+        <ResourceDictionary>
+            <Style x:Key="CustomButtonStyle" BasedOn="{StaticResource AccentedSquareButtonStyle}" TargetType="{x:Type Button}">
+                <Setter Property="controls:ControlsHelper.ContentCharacterCasing" Value="Upper"/>
+            </Style>
+        </ResourceDictionary>
+    </Window.Resources>
+    <StackPanel Orientation="Vertical" Margin="5" Width="300">
+        <DockPanel Height="30" ToolTip="Name of your twitch channel." ToolTipService.ShowDuration="10000">
+            <Label Content="{Binding ChannelNameLabelText}" VerticalAlignment="Center" Margin="5,0,0,0"/>
+            <TextBox Text="{Binding ChannelName, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="0,0,5,0" Width="180"/>
+        </DockPanel>
+        <DockPanel Height="30" ToolTip="Username of the chat bot." ToolTipService.ShowDuration="10000" Visibility="{Binding DebugVisibility}">
+            <Label Content="{Binding BotUsernameLabelText}" VerticalAlignment="Center" Margin="5,0,0,0"/>
+            <TextBox Text="{Binding BotUsername, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="0,0,5,0" Width="180"/>
+        </DockPanel>
+        <DockPanel Height="30" ToolTip="Authentication token for Twitch." ToolTipService.ShowDuration="10000" Visibility="{Binding DebugVisibility}">
+            <Label Content="{Binding TwitchOAuthTokenLabelText}" VerticalAlignment="Center" Margin="5,0,0,0"/>
+            <TextBox Text="{Binding TwitchOAuthToken, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="0,0,5,0" Width="180"/>
+        </DockPanel>
+        <DockPanel Height="30" ToolTip="Twitch IRC URL to connect to." ToolTipService.ShowDuration="10000" Visibility="{Binding DebugVisibility}">
+            <Label Content="{Binding TwitchIrcUrlLabelText}" VerticalAlignment="Center" Margin="5,0,0,0"/>
+            <TextBox Text="{Binding TwitchIrcUrl, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="0,0,5,0" Width="180"/>
+        </DockPanel>
+        <DockPanel Height="30" ToolTip="Twitch IRC port to connect to." ToolTipService.ShowDuration="10000" Visibility="{Binding DebugVisibility}">
+            <Label Content="{Binding TwitchIrcPortLabelText}" VerticalAlignment="Center" Margin="5,0,0,0"/>
+            <TextBox Name="TwitchIrcPortTextBox" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="0,0,5,0" Width="180" MaxLength="5">
+                <TextBox.Text>
+                    <Binding Path="TwitchIrcPort" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged">
+                        <Binding.ValidationRules>
+                            <ui:NumericValidationRule ValidatesOnTargetUpdated="True" MinValue="0" MaxValue="65535"/>
+                        </Binding.ValidationRules>
+                    </Binding>
+                </TextBox.Text>
+            </TextBox>
+        </DockPanel>
+        <DockPanel Height="30" ToolTip="The command the bot is going to respond to." ToolTipService.ShowDuration="10000">
+            <Label Content="{Binding ChatCommandLabelText}" VerticalAlignment="Center" Margin="5,0,0,0"/>
+            <TextBox Text="{Binding ChatCommand, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="0,0,5,0" Width="180"/>
+        </DockPanel>
+
+        <WrapPanel VerticalAlignment="Bottom" HorizontalAlignment="Right" Margin="0,20,5,5">
+            <Button Content="_Ok" IsDefault="True" Command="{Binding SaveSettingsCommand}" Click="OnOkClick" Width="75" Margin="0,0,10,0" Height="28">
+                <Button.Style>
+                    <Style TargetType="{x:Type Button}" BasedOn="{StaticResource CustomButtonStyle}">
+                        <Setter Property="IsEnabled" Value="False"/>
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding ElementName=TwitchIrcPortTextBox, Path=(Validation.HasError)}" Value="False">
+                                <Setter Property="IsEnabled" Value="True"/>
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </Button.Style>
+            </Button>
+            <Button Style="{DynamicResource CustomButtonStyle}" Content="_Cancel" IsCancel="True" Width="75" Height="28"></Button>
+        </WrapPanel>
+    </StackPanel>
+</controls:MetroWindow>
