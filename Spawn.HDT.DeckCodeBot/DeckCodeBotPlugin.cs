@@ -194,7 +194,7 @@ namespace Spawn.HDT.DeckCodeBot
         #region GetDataDirectory
         public static string GetDataDirectory(string strFolder = "")
         {
-            string strRet = Path.Combine(Config.Instance.DataDir, "DeckCodeProvider", strFolder);
+            string strRet = Path.Combine(Config.Instance.DataDir, "DeckBot", strFolder);
 
             if (!Directory.Exists(strRet))
                 Directory.CreateDirectory(strRet);
