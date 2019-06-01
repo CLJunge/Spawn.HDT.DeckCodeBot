@@ -72,7 +72,7 @@ namespace Spawn.HDT.DeckCodeBot
                 Header = m_toggle,
                 Icon = new Image()
                 {
-                    Source = new System.Windows.Media.Imaging.BitmapImage(new Uri("/Spawn.HDT.DeckCodeProvider;component/Resources/Off.png", UriKind.Relative))
+                    Source = new System.Windows.Media.Imaging.BitmapImage(new Uri("/Spawn.HDT.DeckCodeBot;component/Resources/Off.png", UriKind.Relative))
                 }
             };
 
@@ -97,7 +97,7 @@ namespace Spawn.HDT.DeckCodeBot
 
                 miMain.Icon = new Image()
                 {
-                    Source = new System.Windows.Media.Imaging.BitmapImage(new Uri("/Spawn.HDT.DeckCodeProvider;component/Resources/Off.png", UriKind.Relative))
+                    Source = new System.Windows.Media.Imaging.BitmapImage(new Uri("/Spawn.HDT.DeckCodeBot;component/Resources/Off.png", UriKind.Relative))
                 };
             }
         }
@@ -112,7 +112,7 @@ namespace Spawn.HDT.DeckCodeBot
 
                 miMain.Icon = new Image()
                 {
-                    Source = new System.Windows.Media.Imaging.BitmapImage(new Uri("/Spawn.HDT.DeckCodeProvider;component/Resources/On.png", UriKind.Relative))
+                    Source = new System.Windows.Media.Imaging.BitmapImage(new Uri("/Spawn.HDT.DeckCodeBot;component/Resources/On.png", UriKind.Relative))
                 };
             });
         }
