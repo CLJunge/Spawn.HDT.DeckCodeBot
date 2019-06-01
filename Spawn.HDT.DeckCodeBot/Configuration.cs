@@ -91,21 +91,11 @@ namespace Spawn.HDT.DeckCodeBot
         #endregion
 
         #region Save
-        public void Save(string strFileName = "config.xml")
-        {
-            string strPath = Path.Combine(DeckCodeBotPlugin.GetDataDirectory(), strFileName);
-
-            FileHelper.Write(strPath, this, true);
-        }
+        public void Save(string strFileName = "config.xml") => FileHelper.Write(Path.Combine(DeckCodeBotPlugin.GetDataDirectory(), strFileName), this);
         #endregion
 
         #region [STATIC] Load
-        public static Configuration Load(string strFileName = "config.xml")
-        {
-            string strPath = Path.Combine(DeckCodeBotPlugin.GetDataDirectory(), strFileName);
-
-            return FileHelper.Read<Configuration>(strPath, true);
-        }
+        public static Configuration Load(string strFileName = "config.xml") => FileHelper.Read<Configuration>(Path.Combine(DeckCodeBotPlugin.GetDataDirectory(), strFileName));
         #endregion
     }
 }
