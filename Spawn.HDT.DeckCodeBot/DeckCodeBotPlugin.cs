@@ -3,6 +3,7 @@ using Hearthstone_Deck_Tracker;
 using Hearthstone_Deck_Tracker.Controls.Error;
 using Hearthstone_Deck_Tracker.Hearthstone;
 using MahApps.Metro.Controls;
+using Spawn.HDT.DeckCodeBot.ChatBot;
 using Spawn.HDT.DeckCodeBot.UI.Dialogs;
 using System;
 using System.IO;
@@ -137,7 +138,7 @@ namespace Spawn.HDT.DeckCodeBot
         #endregion
 
         #region OnBotError
-        private void OnBotError(object sender, ErrorEventArgs e)
+        private void OnBotError(object sender, ChatBot.ErrorEventArgs e)
         {
             m_bot?.Dispose();
 

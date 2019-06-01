@@ -1,4 +1,4 @@
-﻿namespace Spawn.HDT.DeckCodeBot
+﻿namespace Spawn.HDT.DeckCodeBot.ChatBot
 {
     public class ErrorEventArgs : System.EventArgs
     {

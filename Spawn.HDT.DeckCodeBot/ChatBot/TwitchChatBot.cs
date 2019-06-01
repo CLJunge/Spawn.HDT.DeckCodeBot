@@ -6,7 +6,7 @@ using System.Net.Sockets;
 using System.Threading.Tasks;
 #endregion
 
-namespace Spawn.HDT.DeckCodeBot
+namespace Spawn.HDT.DeckCodeBot.ChatBot
 {
     //Based on https://liquid.fish/current/twitch-irc-bot-c-console-application
     public class TwitchChatBot : IDisposable

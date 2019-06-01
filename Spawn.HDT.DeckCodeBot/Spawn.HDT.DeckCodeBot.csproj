@@ -64,9 +64,9 @@
   <ItemGroup>
     <Compile Include="Configuration.cs" />
     <Compile Include="DeckCodeBotPlugin.cs" />
-    <Compile Include="ErrorEventArgs.cs" />
+    <Compile Include="ChatBot\ErrorEventArgs.cs" />
     <Compile Include="FileHelper.cs" />
-    <Compile Include="MessageEventArgs.cs" />
+    <Compile Include="ChatBot\MessageEventArgs.cs" />
     <Compile Include="ObservableObject.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
@@ -81,7 +81,7 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <Compile Include="TwitchChatBot.cs" />
+    <Compile Include="ChatBot\TwitchChatBot.cs" />
     <Compile Include="UI\Dialogs\SettingsDialogView.xaml.cs">
       <DependentUpon>SettingsDialogView.xaml</DependentUpon>
     </Compile>
