@@ -123,12 +123,7 @@
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
-    <PostBuildEvent>if '$(ConfigurationName)' == 'Deploy' copy /Y "$(TargetPath)" "%25appdata%25\HearthstoneDeckTracker\Plugins\$(TargetFileName)"
-if '$(ConfigurationName)' == 'Deploy' taskkill /IM "HearthstoneDeckTracker.exe" /F
-if '$(ConfigurationName)' == 'Deploy' start /d "D:\Repos\Visual Studio\Hearthstone-Deck-Tracker\Hearthstone Deck Tracker\bin\x86\Debug" HearthstoneDeckTracker.exe
-if '$(ConfigurationName)' == 'Release' copy /Y "$(TargetPath)" "%25appdata%25\HearthstoneDeckTracker\Plugins\$(TargetFileName)"
-if '$(ConfigurationName)' == 'Release' taskkill /IM "HearthstoneDeckTracker.exe" /F
-if '$(ConfigurationName)' == 'Release' start /d "D:\Repos\Visual Studio\Hearthstone-Deck-Tracker\Hearthstone Deck Tracker\bin\x86\Debug" HearthstoneDeckTracker.exe
-</PostBuildEvent>
+    <PostBuildEvent>
+    </PostBuildEvent>
   </PropertyGroup>
 </Project>
