@@ -52,8 +52,8 @@
       <HintPath>..\lib\HearthMirror.dll</HintPath>
       <Private>False</Private>
     </Reference>
-    <Reference Include="Hearthstone Deck Tracker">
-      <HintPath>..\lib\Hearthstone Deck Tracker.exe</HintPath>
+    <Reference Include="HearthstoneDeckTracker">
+      <HintPath>..\lib\HearthstoneDeckTracker.exe</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="MahApps.Metro">
