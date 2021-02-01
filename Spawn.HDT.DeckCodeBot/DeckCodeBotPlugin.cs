@@ -58,6 +58,9 @@ namespace Spawn.HDT.DeckCodeBot
 
         public void OnUpdate()
         {
+            miStatus.IsEnabled = Configuration.Instance.IsValid;
+
+            m_toggle.OffLabel = !miStatus.IsEnabled ? "Current plugin settings are invalid!" : "Disconnected";
         }
         #endregion
 

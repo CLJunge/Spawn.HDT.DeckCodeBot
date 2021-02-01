@@ -76,6 +76,11 @@ namespace Spawn.HDT.DeckCodeBot
             set => Set(ref m_strChatCommand, value);
         }
         #endregion
+
+        #region IsValid
+        public bool IsValid => !string.IsNullOrEmpty(ChannelName) && !string.IsNullOrEmpty(BotUsername)
+            && !string.IsNullOrEmpty(TwitchOAuthToken) && !string.IsNullOrEmpty(TwitchIrcUrl) && !string.IsNullOrEmpty(ChatCommand);
+        #endregion
         #endregion
 
         #region Ctor
