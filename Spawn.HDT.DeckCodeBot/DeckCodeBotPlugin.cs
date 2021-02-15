@@ -176,7 +176,7 @@ namespace Spawn.HDT.DeckCodeBot
         #region DisconnectFromTwitch
         private void DisconnectFromTwitch()
         {
-            if (m_bot != null)
+            if (m_bot?.Connected ?? false)
             {
                 m_bot.ConnectedToChannel -= OnBotConnected;
                 m_bot.NewMessage -= OnBotMessage;

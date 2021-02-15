@@ -30,7 +30,7 @@ namespace Spawn.HDT.DeckCodeBot.ChatBot
         #region Properties
         public string Username { get; }
         public string Channel { get; }
-        public bool Running { get; private set; }
+        public bool Connected { get; private set; }
         #endregion
 
         #region Ctor
@@ -50,7 +50,7 @@ namespace Spawn.HDT.DeckCodeBot.ChatBot
         #region Connect
         public void Connect(string strUrl, int nPort, string strOAuthToken)
         {
-            if (!Running && !string.IsNullOrEmpty(strUrl)
+            if (!Connected && !string.IsNullOrEmpty(strUrl)
                 && !string.IsNullOrEmpty(strOAuthToken))
             {
                 try
@@ -66,7 +66,7 @@ namespace Spawn.HDT.DeckCodeBot.ChatBot
 
                     Join(strOAuthToken);
 
-                    Running = true;
+                    Connected = true;
 
                     Task.Factory.StartNew(async () => await KeepAlive());
                     Task.Factory.StartNew(async () => await ReadMessages());
@@ -111,7 +111,7 @@ namespace Spawn.HDT.DeckCodeBot.ChatBot
         {
             Debug.WriteLine("Started ReadMessages task...");
 
-            while (Running)
+            while (Connected)
             {
                 try
                 {
@@ -176,7 +176,7 @@ namespace Spawn.HDT.DeckCodeBot.ChatBot
         {
             Debug.WriteLine("Started KeepAlive task...");
 
-            while (Running)
+            while (Connected)
             {
                 Debug.WriteLine("Sending ping to Twitch...");
 
@@ -190,20 +190,23 @@ namespace Spawn.HDT.DeckCodeBot.ChatBot
         #region Join
         private void Join(string strTwitchOAuthToken)
         {
-            Debug.WriteLine($"Joining #{Channel} as {Username}...");
+            if (m_writer != null)
+            {
+                Debug.WriteLine($"Joining #{Channel} as {Username}...");
 
-            m_writer.WriteLine($"PASS {strTwitchOAuthToken}");
-            m_writer.WriteLine($"NICK {Username}");
-            m_writer.WriteLine($"USER {Username} 8 * :{Username}");
-            m_writer.WriteLine($"JOIN #{Channel}");
-            m_writer.Flush();
+                m_writer.WriteLine($"PASS {strTwitchOAuthToken}");
+                m_writer.WriteLine($"NICK {Username}");
+                m_writer.WriteLine($"USER {Username} 8 * :{Username}");
+                m_writer.WriteLine($"JOIN #{Channel}");
+                m_writer.Flush(); 
+            }
         }
         #endregion
 
         #region Dispose
         public void Dispose()
         {
-            Running = false;
+            Connected = false;
 
             m_writer?.Dispose();
             m_writer = null;
@@ -214,7 +217,7 @@ namespace Spawn.HDT.DeckCodeBot.ChatBot
             m_client?.Close();
             m_client = null;
 
-            Debug.WriteLine($"Closed connection");
+            Debug.WriteLine($"Closed client connection");
         }
         #endregion
     }
