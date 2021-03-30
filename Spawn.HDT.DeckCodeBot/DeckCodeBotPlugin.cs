@@ -6,6 +6,7 @@ using Hearthstone_Deck_Tracker.Plugins;
 using MahApps.Metro.Controls;
 using Spawn.HDT.DeckCodeBot.ChatBot;
 using Spawn.HDT.DeckCodeBot.UI.Dialogs;
+using Spawn.HDT.DeckCodeBot.UI.ViewModels;
 using System;
 using System.IO;
 using System.Reflection;
@@ -196,6 +197,15 @@ namespace Spawn.HDT.DeckCodeBot
             {
                 Owner = Core.MainWindow
             };
+
+            if (!m_bot?.Connected ?? true)
+            {
+                (settingsDialogView.DataContext as SettingsDialogViewModel).EnableInput = true;
+            }
+            else
+            {
+                (settingsDialogView.DataContext as SettingsDialogViewModel).WindowTitle = "Deck Bot [CONNECTED] - Settings";
+            }
 
             settingsDialogView.ShowDialog();
         }

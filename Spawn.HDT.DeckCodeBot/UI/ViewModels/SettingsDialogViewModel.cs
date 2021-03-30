@@ -24,6 +24,7 @@ namespace Spawn.HDT.DeckCodeBot.UI.ViewModels
         private string m_strTwitchIrcPortLabelText;
         private string m_strChatCommand;
         private string m_strChatCommandLabelText;
+        private bool m_blnEnableInput;
         #endregion
 
         #region Properties
@@ -136,6 +137,14 @@ namespace Spawn.HDT.DeckCodeBot.UI.ViewModels
         {
             get => m_strChatCommandLabelText;
             set => Set(ref m_strChatCommandLabelText, value);
+        }
+        #endregion
+
+        #region EnableInput
+        public bool EnableInput
+        {
+            get => m_blnEnableInput;
+            set => Set(ref m_blnEnableInput, value);
         }
         #endregion
 

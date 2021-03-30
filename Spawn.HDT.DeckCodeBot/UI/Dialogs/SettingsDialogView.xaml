@@ -28,11 +28,11 @@
     <StackPanel Orientation="Vertical" Margin="5" Width="375">
         <DockPanel Height="30" ToolTip="Twitch IRC URL to connect to." ToolTipService.ShowDuration="10000" Visibility="{Binding DebugVisibility}">
             <Label Content="{Binding TwitchIrcUrlLabelText}" VerticalAlignment="Center" Margin="5,0,0,0"/>
-            <TextBox Text="{Binding TwitchIrcUrl, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="0,0,5,0" Width="255"/>
+            <TextBox Text="{Binding TwitchIrcUrl, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="0,0,5,0" Width="255" IsEnabled="{Binding EnableInput}"/>
         </DockPanel>
         <DockPanel Height="30" ToolTip="Twitch IRC port to connect to." ToolTipService.ShowDuration="10000" Visibility="{Binding DebugVisibility}">
             <Label Content="{Binding TwitchIrcPortLabelText}" VerticalAlignment="Center" Margin="5,0,0,0"/>
-            <TextBox Name="TwitchIrcPortTextBox" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="0,0,5,0" Width="255" MaxLength="5">
+            <TextBox Name="TwitchIrcPortTextBox" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="0,0,5,0" Width="255" MaxLength="5"  IsEnabled="{Binding EnableInput}">
                 <TextBox.Text>
                     <Binding Path="TwitchIrcPort" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged">
                         <Binding.ValidationRules>
@@ -44,11 +44,11 @@
         </DockPanel>
         <DockPanel Height="30" ToolTip="Name of your Twitch channel." ToolTipService.ShowDuration="10000">
             <Label Content="{Binding ChannelNameLabelText}" VerticalAlignment="Center" Margin="5,0,0,0"/>
-            <TextBox Text="{Binding ChannelName, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="0,0,5,0" Width="255"/>
+            <TextBox Text="{Binding ChannelName, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="0,0,5,0" Width="255" IsEnabled="{Binding EnableInput}"/>
         </DockPanel>
         <DockPanel Height="30" ToolTip="Name of the Twitch account that is going to act as the bot." ToolTipService.ShowDuration="10000">
             <Label Content="{Binding BotUsernameLabelText}" VerticalAlignment="Center" Margin="5,0,0,0"/>
-            <TextBox Text="{Binding BotUsername, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="0,0,5,0" Width="255"/>
+            <TextBox Text="{Binding BotUsername, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="0,0,5,0" Width="255" IsEnabled="{Binding EnableInput}"/>
         </DockPanel>
         <DockPanel Height="30" ToolTip="Authentication token for Twitch. In order to generate a token, login to the aforementioned Twitch account, open the link and follow the steps." ToolTipService.ShowDuration="10000">
             <Label VerticalAlignment="Center" Margin="5,0,0,0">
@@ -56,7 +56,7 @@
                     <Run Style="{StaticResource LinkLabelStyle}" Text="{Binding TwitchOAuthTokenLabelText}"/>
                 </Hyperlink>
             </Label>
-            <TextBox VerticalAlignment="Center" HorizontalAlignment="Right" Margin="0,0,5,0" Width="255">
+            <TextBox VerticalAlignment="Center" HorizontalAlignment="Right" Margin="0,0,5,0" Width="255" IsEnabled="{Binding EnableInput}">
                 <TextBox.Text>
                     <Binding Path="TwitchOAuthToken" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged">
                         <Binding.ValidationRules>
@@ -68,7 +68,7 @@
         </DockPanel>
         <DockPanel Height="30" ToolTip="The command the bot is going to respond to." ToolTipService.ShowDuration="10000">
             <Label Content="{Binding ChatCommandLabelText}" VerticalAlignment="Center" Margin="5,0,0,0"/>
-            <TextBox Text="{Binding ChatCommand, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="0,0,5,0" Width="255"/>
+            <TextBox Text="{Binding ChatCommand, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="0,0,5,0" Width="255" IsEnabled="{Binding EnableInput}"/>
         </DockPanel>
 
         <WrapPanel VerticalAlignment="Bottom" HorizontalAlignment="Right" Margin="0,20,5,5">
